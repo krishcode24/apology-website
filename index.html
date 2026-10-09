@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#eee1cd">
+<meta name="description" content="A sincere apology, written with care for Gathan.">
+<title>For Gathan ♡</title>
+<link rel="icon" href="images/love letter.ico" type="image/x-icon">
+<style>
+  :root {
+    --paper: #f4ead9;
+    --paper-deep: #e7d6bd;
+    --ink: #3e3028;
+    --muted: #78675a;
+    --rust: #986e56;
+    --line: rgba(82, 61, 44, .18);
+    --serif: Georgia, "Times New Roman", serif;
+    --sans: "Trebuchet MS", Arial, sans-serif;
+    --script: "Segoe Print", "Bradley Hand", "Comic Sans MS", cursive;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; scroll-padding-top: 76px; }
+  body {
+    margin: 0; color: var(--ink); background: var(--paper);
+    font-family: var(--serif); line-height: 1.8;
+    background-image: radial-gradient(rgba(105,75,47,.055) .7px, transparent .7px);
+    background-size: 5px 5px;
+  }
+  a { color: inherit; }
+  .topbar {
+    position: sticky; top: 0; z-index: 20; display: flex; align-items: center;
+    justify-content: space-between; gap: 18px; padding: 14px clamp(18px, 5vw, 68px);
+    background: rgba(244,234,217,.92); border-bottom: 1px solid var(--line);
+    backdrop-filter: blur(12px);
+  }
+  .brand { text-decoration: none; font-size: .95rem; white-space: nowrap; letter-spacing: .03em; }
+  nav { display: flex; gap: clamp(10px, 2.5vw, 28px); flex-wrap: wrap; justify-content: flex-end; }
+  nav a { font-family: var(--sans); text-decoration: none; font-size: .75rem; color: var(--muted); }
+  nav a:hover, nav a:focus { color: var(--rust); text-decoration: underline; text-underline-offset: 5px; }
+  section { padding: clamp(66px, 10vw, 120px) 22px; }
+  .inner { width: min(850px, 100%); margin: 0 auto; }
+  .hero {
+    min-height: 88vh; display: grid; place-items: center; text-align: center; position: relative;
+    overflow: hidden; padding: 100px 24px 80px;
+    background:
+      linear-gradient(180deg, rgba(42,39,43,.52), rgba(40,34,31,.28) 52%, rgba(34,30,27,.72)),
+      url("images/herobg.png") center/cover;
+    color: #fff8ed;
+  }
+  .hero:before { content: ""; position: absolute; inset: 18px; border: 1px solid rgba(255,248,237,.32); pointer-events: none; }
+  .hero-content { max-width: 760px; position: relative; animation: rise 1.1s both; }
+  .eyebrow { font: .72rem var(--sans); text-transform: uppercase; letter-spacing: .24em; }
+  h1 { font: 400 clamp(2.7rem, 8vw, 6.4rem)/1.08 var(--script); margin: 26px 0; }
+  .hero p { max-width: 530px; margin: 0 auto 28px; font-size: clamp(1rem, 2vw, 1.18rem); }
+  .button {
+    display: inline-block; border: 1px solid currentColor; border-radius: 999px;
+    padding: 11px 22px; text-decoration: none; font: .83rem var(--sans); letter-spacing: .02em;
+    transition: transform .2s, background .2s;
+  }
+  .button:hover { transform: translateY(-2px); background: rgba(255,255,255,.14); }
+  .scroll-note { position: absolute; bottom: 22px; font: .72rem var(--sans); letter-spacing: .1em; opacity: .8; }
+  .section-kicker { color: var(--rust); font: .72rem var(--sans); letter-spacing: .18em; text-transform: uppercase; }
+  h2 { font: 400 clamp(2rem, 5vw, 3.5rem)/1.2 var(--script); margin: 10px 0 28px; }
+  p { margin: 0 0 18px; }
+  .paper-card {
+    position: relative; background: rgba(255,250,240,.68); padding: clamp(25px, 5vw, 54px);
+    box-shadow: 0 12px 32px rgba(76,53,34,.08); border: 1px solid rgba(120,88,58,.13);
+  }
+  .paper-card:before {
+    content: ""; position: absolute; inset: 8px; border: 1px dashed rgba(120,88,58,.18); pointer-events: none;
+  }
+  .paper-card > * { position: relative; }
+  .letter { font-size: 1.02rem; }
+  .signature { font: 1.35rem var(--script); text-align: right; margin-top: 28px; }
+  .split { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; align-items: stretch; }
+  .note { background: #e8d7bf; padding: 28px; transform: rotate(-1deg); box-shadow: 0 8px 18px #6b4b2b13; }
+  .note:nth-child(2) { transform: rotate(1deg); background: #f8efdf; }
+  .note h3 { font: 1.5rem var(--script); margin: 0 0 12px; }
+  .note p { font-size: .96rem; }
+  .small-label { color: var(--muted); font: .7rem var(--sans); text-transform: uppercase; letter-spacing: .15em; }
+  .memory-strip { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 30px; }
+  .memory {
+    padding: 10px 10px 20px; background: #fffaf1; box-shadow: 0 8px 20px #513b2812;
+    transform: rotate(-1.4deg); text-align: center;
+  }
+  .memory:nth-child(2) { transform: rotate(1.5deg); }
+  .memory:nth-child(3) { transform: rotate(-.5deg); }
+  .memory-art {
+    aspect-ratio: 4 / 3; display: grid; place-items: center; overflow: hidden;
+    background: linear-gradient(140deg,#d5bda0,#eee3d2 50%,#b6a18b); color: #fffaf1;
+    font-size: 2rem;
+  }
+  .memory-art img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .memory p { font: .83rem var(--script); margin: 13px 3px 0; }
+  .quiet { color: var(--muted); font-size: .92rem; }
+  .promise-list { list-style: none; padding: 0; margin: 28px 0 0; }
+  .promise-list li { padding: 13px 0 13px 32px; border-bottom: 1px solid var(--line); position: relative; }
+  .promise-list li:before { content: "♡"; position: absolute; left: 2px; color: var(--rust); }
+  .finale {
+    text-align: center; color: #fff8ee;
+    background: linear-gradient(rgba(37,34,34,.78),rgba(37,34,34,.78)),
+      url("images/IMG_9346.JPG") center/cover;
+  }
+  .finale h2 { font-size: clamp(2.4rem, 7vw, 5rem); }
+  .finale .paper-card { color: var(--ink); max-width: 650px; margin: 28px auto 0; text-align: left; }
+  .finale .button { margin-top: 16px; cursor: pointer; background: transparent; color: inherit; }
+  .hidden-message { display: none; margin-top: 22px; padding-top: 18px; border-top: 1px solid var(--line); }
+  .hidden-message.show { display: block; animation: rise .6s both; }
+  footer { text-align: center; padding: 28px 20px; font: .75rem var(--sans); color: var(--muted); }
+  .heart { display: inline-block; animation: pulse 2s infinite; color: #b47d6a; }
+  .reveal { opacity: 0; transform: translateY(18px); transition: opacity .8s ease, transform .8s ease; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+  @keyframes rise { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
+  @keyframes pulse { 0%,100% { transform: scale(1); } 50% { transform: scale(1.16); } }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { scroll-behavior: auto !important; animation: none !important; transition: none !important; }
+    .reveal { opacity: 1; transform: none; }
+  }
+  @media (max-width: 650px) {
+    .topbar { align-items: flex-start; padding: 12px 16px; }
+    nav { gap: 9px 14px; }
+    nav a { font-size: .7rem; }
+    .brand { font-size: .82rem; }
+    .split { grid-template-columns: 1fr; }
+    .memory-strip { grid-template-columns: 1fr; gap: 22px; max-width: 320px; margin-inline: auto; }
+    .memory { transform: none !important; }
+    .hero { min-height: 82vh; }
+  }
+  
+/* Photo gallery — warm scrapbook style */
+#day-gallery {
+  background: #eee1cd;
+}
+
+.gallery-intro {
+  max-width: 620px;
+  color: #78675a;
+  margin-bottom: 35px;
+}
+
+.photo-gallery {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 28px 22px;
+  align-items: start;
+}
+
+.polaroid {
+  background: #fffaf1;
+  padding: 10px 10px 18px;
+  margin: 0;
+  box-shadow: 0 8px 20px rgba(72, 49, 30, 0.12);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.polaroid:nth-child(odd) {
+  transform: rotate(-2deg);
+}
+
+.polaroid:nth-child(even) {
+  transform: rotate(2deg);
+  margin-top: 18px;
+}
+
+.polaroid:hover {
+  transform: rotate(0deg) translateY(-6px);
+  box-shadow: 0 14px 28px rgba(72, 49, 30, 0.18);
+}
+
+.polaroid img,
+.polaroid video {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  background: #dfcdb5;
+}
+
+.polaroid figcaption {
+  font-family: "Segoe Print", "Comic Sans MS", cursive;
+  font-size: 0.85rem;
+  text-align: center;
+  line-height: 1.5;
+  padding: 14px 3px 0;
+  color: #594538;
+}
+
+.gallery-ending {
+  font-family: "Segoe Print", "Comic Sans MS", cursive;
+  text-align: center;
+  max-width: 560px;
+  margin: 45px auto 0;
+  color: #78604f;
+}
+
+@media (max-width: 650px) {
+  .photo-gallery {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px 14px;
+  }
+
+  .polaroid {
+    padding: 7px 7px 13px;
+  }
+
+  .polaroid:nth-child(even) {
+    margin-top: 12px;
+  }
+
+  .polaroid figcaption {
+    font-size: 0.75rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .photo-gallery {
+    grid-template-columns: 1fr;
+    max-width: 270px;
+    margin-inline: auto;
+  }
+
+  .polaroid:nth-child(even) {
+    margin-top: 0;
+  }
+}
+</style>
+</head>
+<body>
+<header class="topbar">
+  <a class="brand" href="#home">For Gathan <span class="heart">♡</span></a>
+  <nav aria-label="Main navigation">
+    <a href="#letter">The letter</a><a href="#forward">Pictures</a><a href="#last">For you</a>
+  </nav>
+</header>
+
+<main>
+  <section class="hero" id="home">
+    <div class="hero-content">
+      <h1>I'm sorry<br>that I hurt you.</h1>
+      <p>I know words can't undo for what I've said. But I hope this little space helps you see how much I truly regret it.</p>
+      <a class="button" href="#letter">Read my letter ↓</a>
+    </div>
+  </section>
+
+  <section id="letter">
+    <div class="inner reveal">
+      <div class="section-kicker">01 · The letter</div>
+      <h2>A letter I should have written sooner</h2>
+      <article class="paper-card letter">
+        <p>Dear Gathan,</p>
+        <p>I'm sorry. I really am.</p>
+        <p>You were always allowed to explore on your own. You didn't do something wrong just because I had pictured the moment differently. I wish I had told you I was just sad instead of taking it out on you.</p>
+        <p>When you told me you needed time to process everything, I realised that explaining what I meant wasn't the same as undoing how it made you feel. I'm sorry I hurt you, especially when all I wanted was to share something meaningful with you.</p>
+        <p>I was disappointed. I had imagined getting to show you around a place that is part of my everyday life, and I felt like I'd missed that chance. I didn't know how to express that feeling properly in the moment.</p>
+        <p>I care about you, I care about us and Kaveena now,and I never want that care to become a reason you feel disrespected or uncomfortable around me. You deserved more patience and kindness from me in that moment.</p>
+        <p>At this point you think I will never change, and maybe that's true cause everyday I feel like I ruin everyones' lives, but I want you to know that I am committed to doing better. I should have spoken calmly and told you why I was disappointed. I should have listened to your side instead of shouting and using words that could hurt you. You deserved that respect, even while I was upset.</p>
+        <p>I can't promise I'll never make a mistake, but I can be more thoughtful about how I handle my feelings. I am not writing this to make you forgive me quickly, to make you reassure me, or to ask you to decide anything about us. I just wanted to give you a sincere apology and acknowledge what I did wrong.</p>
+        <p>I'm sorry, Gathan. You don't have to reply before you're ready. I'll respect the time you need.</p>
+        <div class="signature">With care, <br>Krishna ♡</div>
+      </article>
+    </div>
+  </section>
+
+  <section id="forward">
+    <div class="inner reveal">
+    <div class="section-kicker">02 · A day to remember</div>
+    <h2>Even after the little storm,<br>there were moments of joy.</h2>
+
+    <p class="gallery-intro">
+      Not every moment of that day was perfect, but there were still
+      little moments I'm glad we got to share. I wanted to keep them here.
+    </p>
+
+    <div class="photo-gallery">
+
+      <!-- PHOTO 1 -->
+      <figure class="polaroid">
+        <img src="images/1.jpg"
+             alt="A moment from our campus day">
+        <figcaption>
+          A little moment together ♡
+        </figcaption>
+      </figure>
+
+      <!-- PHOTO 2 -->
+      <figure class="polaroid">
+        <img src="images/6.jpg"
+             alt="A happy moment from that day">
+        <figcaption>
+          The smiles I'll remember
+        </figcaption>
+      </figure>
+
+      <!-- PHOTO 3 -->
+      <figure class="polaroid">
+        <video src="images/3.mp4" autoplay muted loop playsinline></video>
+        <figcaption>
+          Our Shenanigans
+        </figcaption>
+      </figure>
+
+      <!-- PHOTO 4 -->
+      <figure class="polaroid">
+        <img src="images/2.jpg"
+             alt="Shopping around">
+        <figcaption>
+          Shopping and laughing around
+        </figcaption>
+      </figure>
+
+      <!-- PHOTO 5 -->
+      <figure class="polaroid">
+        <video src="images/4.mp4" autoplay muted loop playsinline></video>
+        <figcaption>
+          Photoshoot memories
+        </figcaption>
+      </figure>
+
+      <!-- PHOTO 6 -->
+      <figure class="polaroid">
+        <img src="images/5.jpg"
+             alt="A final photograph from that day">
+        <figcaption>
+          A little piece of that day ♡
+        </figcaption>
+      </figure>
+
+    </div>
+  </div>
+  </section>
+
+
+  <section id="last" class="finale">
+    <div class="inner reveal">
+      <h2>You don't owe me forgiveness.</h2>
+      <div class="paper-card">
+        <p>I know this might be a lot to read, and I don't expect a reply.</p>
+        <p>I don't want to pressure you, make you feel guilty, or ask you to take care of my feelings while you're processing your own.</p>
+        <p>I just wanted you to know that I hope where I failed, and I recognise you're hurt. Please don't shut me out then, rather talk to me and tell me where I hurt you. I'm sorry that I don't know where I hurt you but I do wanna repair the damage.</p>
+        <p>I hope you find peace with what happened, in whatever way feels right for you. Whether you need time, distance, or a conversation later, I'll respect that.</p>
+        <p>Thank you for reading this far. Take care of yourself, Gathan.</p>
+        <p class="signature">I'm sorry. Truly. <span class="heart">♡</span></p>
+        <div style="text-align:center">
+          <button class="button" id="finalButton" type="button" aria-expanded="false" aria-controls="hiddenMessage">One last little note ♡</button>
+        </div>
+        <div class="hidden-message" id="hiddenMessage">
+          <p>Whatever happens next, I still care about you and want the best for you. Everyday I forgetting stuff, including what people says and what is their character.</p>
+          <p>and everyday I forgetting you also..but you always had the old familliar voice in my head that makes me remember when you talk to me. You matter as a person, YOU ALWAYS MATTERED TO ME. ALWAYS ❤️ That's why I threw away my happiness for you, Only now I realise that didn't work out the way I hoped. </p>
+          <p>There's no hidden question at the end of this letter. Just an apology, and a wish for you to be okay.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+<footer>
+  <div>Made with sincerity <span class="heart">♡</span></div>
+  <div style="margin-top:5px">A personal letter for Gathan · Take all the time you need</div>
+</footer>
+
+<script>
+  // Fade sections gently into view as the reader scrolls.
+  const revealItems = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window) {
+    const observer = new IntersectionObserver((entries, obs) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          obs.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    revealItems.forEach(item => observer.observe(item));
+  } else {
+    revealItems.forEach(item => item.classList.add('visible'));
+  }
+
+  // Reveal the final note only when the reader chooses to open it.
+  const finalButton = document.getElementById('finalButton');
+  const hiddenMessage = document.getElementById('hiddenMessage');
+  finalButton.addEventListener('click', () => {
+    const isOpen = hiddenMessage.classList.toggle('show');
+    finalButton.setAttribute('aria-expanded', String(isOpen));
+    finalButton.textContent = isOpen ? 'Close P.S. ↑' : 'P.S. ♡';
+    if (isOpen) hiddenMessage.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  });
+</script>
+</body>
+</html>
